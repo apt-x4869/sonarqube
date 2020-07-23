@@ -28,7 +28,7 @@ pipeline {
       steps {
           sh 'printenv'
           sh 'echo "Saving logs to a new file in ${JENKINS_HOME}/LOGS folder..."'
-          sh 'cat ${JENKINS_HOME}/jobs/SonarQube-Integration/branches/${GIT_BRANCH}/builds/${BUILD_NUMBER}/log >> ${BUILD_TAG}.txt'
+          sh 'cat ${JENKINS_HOME}/jobs/SonarQube_Integration/branches/${GIT_BRANCH}/builds/${BUILD_NUMBER}/log >> ${BUILD_TAG}.txt'
       }
     }
     stage('Upload to AWS') {
