@@ -4,14 +4,13 @@ pipeline {
     stage("build & SonarQube analysis") {
       agent any
       steps {
-        sh 'echo "START ${env.STAGE_NAME}"'
         withSonarQubeEnv('SonarQube') {
           sh 'mvn clean package sonar:sonar'
         }
-        sh 'echo "END ${env.STAGE_NAME}"'
       }
     }
     stage ("SonarQube analysis") { 
+      agent none
       steps { 
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           script {
